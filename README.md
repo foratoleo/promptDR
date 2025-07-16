@@ -1,7 +1,5 @@
 # DR_ - Digital Republic Assistant
 
-[![DR_: Assistente de IA para Desenvolvimento Web Full-Stack](./public/social_preview_index.jpg)](https://dr-assistant.com)
-
 **DR_** é uma assistente de IA avançada para desenvolvimento web full-stack que roda diretamente no seu navegador. Desenvolvida pela **Digital Republic**, a DR_ permite que você escolha entre múltiplos provedores de IA (OpenAI, Anthropic, Ollama, Google Gemini, Groq, e muitos outros) para criar aplicações web completas de forma intuitiva e eficiente.
 
 ## 🎯 Visão Geral
