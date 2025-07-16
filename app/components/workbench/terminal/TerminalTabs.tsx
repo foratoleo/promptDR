@@ -35,7 +35,7 @@ export const TerminalTabs = memo(() => {
   const closeTerminal = (index: number) => {
     if (index === 0) {
       return;
-    } // Can't close bolt terminal
+    } // Can't close DR_ terminal
 
     const terminalRef = terminalRefs.current[index];
 
@@ -149,7 +149,7 @@ export const TerminalTabs = memo(() => {
                       onClick={() => setActiveTerminal(index)}
                     >
                       <div className="i-ph:terminal-window-duotone text-lg" />
-                      Bolt Terminal
+                      DR_ Terminal
                     </button>
                   ) : (
                     <React.Fragment>
@@ -186,7 +186,7 @@ export const TerminalTabs = memo(() => {
             <IconButton
               className="ml-auto"
               icon="i-ph:caret-down"
-              title="Close"
+              title="Fechar"
               size="md"
               onClick={() => workbenchStore.toggleTerminal(false)}
             />
@@ -194,7 +194,7 @@ export const TerminalTabs = memo(() => {
           {Array.from({ length: terminalCount + 1 }, (_, index) => {
             const isActive = activeTerminal === index;
 
-            logger.debug(`Starting bolt terminal [${index}]`);
+            logger.debug(`Starting DR_ terminal [${index}]`);
 
             if (index == 0) {
               return (

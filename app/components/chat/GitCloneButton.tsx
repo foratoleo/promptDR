@@ -114,15 +114,15 @@ export default function GitCloneButton({ importChat, className }: GitCloneButton
 
         const filesMessage: Message = {
           role: 'assistant',
-          content: `Cloning the repo ${repoUrl} into ${workdir}
+          content: `Clonando o repositório ${repoUrl} em ${workdir}
 ${
   skippedFiles.length > 0
-    ? `\nSkipped files (${skippedFiles.length}):
+    ? `\nArquivos ignorados (${skippedFiles.length}):
 ${skippedFiles.map((f) => `- ${f}`).join('\n')}`
     : ''
 }
 
-<boltArtifact id="imported-files" title="Git Cloned Files" type="bundled">
+<boltArtifact id="imported-files" title="Arquivos Clonados do Git" type="bundled">
 ${fileContents
   .map(
     (file) =>
@@ -146,7 +146,7 @@ ${escapeBoltTags(file.content)}
       }
     } catch (error) {
       console.error('Error during import:', error);
-      toast.error('Failed to import repository');
+      toast.error('Falha ao importar repositório');
     } finally {
       setLoading(false);
     }
@@ -156,7 +156,7 @@ ${escapeBoltTags(file.content)}
     <>
       <Button
         onClick={() => setIsDialogOpen(true)}
-        title="Clone a Git Repo"
+        title="Clonar um Repositório Git"
         variant="default"
         size="lg"
         className={classNames(
@@ -171,12 +171,12 @@ ${escapeBoltTags(file.content)}
         disabled={!ready || loading}
       >
         <span className="i-ph:git-branch w-4 h-4" />
-        Clone a Git Repo
+        Clonar Repositório Git
       </Button>
 
       <RepositorySelectionDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} onSelect={handleClone} />
 
-      {loading && <LoadingOverlay message="Please wait while we clone the repository..." />}
+      {loading && <LoadingOverlay message="Aguarde enquanto clonamos o repositório..." />}
     </>
   );
 }

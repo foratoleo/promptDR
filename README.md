@@ -1,18 +1,16 @@
-# bolt.diy
+# DR_ - Digital Republic Assistant
 
-[![bolt.diy: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.diy)
+[![DR_: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://dr-assistant.com)
 
-Welcome to bolt.diy, the official open source version of Bolt.new, which allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
-
------
-Check the [bolt.diy Docs](https://stackblitz-labs.github.io/bolt.diy/) for more offical installation instructions and more informations.
+Welcome to DR_, uma assistente de IA para desenvolvimento web full-stack. Escolha o modelo de linguagem que deseja usar para cada prompt! Atualmente, você pode usar modelos OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, ou Groq - e é facilmente extensível para usar qualquer outro modelo suportado pelo Vercel AI SDK! Veja as instruções abaixo para executar localmente e estender para incluir mais modelos.
 
 -----
-Also [this pinned post in our community](https://thinktank.ottomator.ai/t/videos-tutorial-helpful-content/3243) has a bunch of incredible resources for running and deploying bolt.diy yourself!
+Consulte a [documentação da DR_](https://dr-assistant.com/docs/) para instruções oficiais de instalação e mais informações.
 
-We have also launched an experimental agent called the "bolt.diy Expert" that can answer common questions about bolt.diy. Find it here on the [oTTomator Live Agent Studio](https://studio.ottomator.ai/).
+-----
+A DR_ é uma assistente de IA desenvolvida para facilitar o desenvolvimento web full-stack, oferecendo suporte a múltiplos modelos de linguagem e uma interface intuitiva para criar aplicações completas.
 
-bolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMedin) but has quickly grown into a massive community effort to build the BEST open source AI coding assistant!
+A DR_ foi criada com foco na produtividade e na facilidade de uso, crescendo como uma solução robusta para desenvolvimento assistido por IA!
 
 ## Table of Contents
 
@@ -26,17 +24,17 @@ bolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMed
 - [Roadmap](#roadmap)
 - [FAQ](#faq)
 
-## Join the community
+## Junte-se à comunidade
 
-[Join the bolt.diy community here, in the oTTomator Think Tank!](https://thinktank.ottomator.ai)
+[Junte-se à comunidade da DR_](https://dr-assistant.com/community/)
 
-## Project management
+## Gerenciamento do projeto
 
-Bolt.diy is a community effort! Still, the core team of contributors aims at organizing the project in way that allows
-you to understand where the current areas of focus are.
+A DR_ é um esforço colaborativo! A equipe principal de contribuidores busca organizar o projeto de forma que permita
+que você compreenda onde estão as áreas de foco atuais.
 
-If you want to know what we are working on, what we are planning to work on, or if you want to contribute to the
-project, please check the [project management guide](./PROJECT.md) to get started easily.
+Se você quer saber no que estamos trabalhando, o que planejamos trabalhar, ou se deseja contribuir para o
+projeto, consulte o [guia de gerenciamento do projeto](./PROJECT.md) para começar facilmente.
 
 ## Requested Additions
 
