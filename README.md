@@ -1,366 +1,212 @@
 # DR_ - Digital Republic Assistant
 
-[![DR_: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://dr-assistant.com)
+[![DR_: Assistente de IA para Desenvolvimento Web Full-Stack](./public/social_preview_index.jpg)](https://dr-assistant.com)
 
-Welcome to DR_, uma assistente de IA para desenvolvimento web full-stack. Escolha o modelo de linguagem que deseja usar para cada prompt! Atualmente, você pode usar modelos OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, ou Groq - e é facilmente extensível para usar qualquer outro modelo suportado pelo Vercel AI SDK! Veja as instruções abaixo para executar localmente e estender para incluir mais modelos.
+**DR_** é uma assistente de IA avançada para desenvolvimento web full-stack que roda diretamente no seu navegador. Desenvolvida pela **Digital Republic**, a DR_ permite que você escolha entre múltiplos provedores de IA (OpenAI, Anthropic, Ollama, Google Gemini, Groq, e muitos outros) para criar aplicações web completas de forma intuitiva e eficiente.
 
------
-Consulte a [documentação da DR_](https://dr-assistant.com/docs/) para instruções oficiais de instalação e mais informações.
+## 🎯 Visão Geral
 
------
-A DR_ é uma assistente de IA desenvolvida para facilitar o desenvolvimento web full-stack, oferecendo suporte a múltiplos modelos de linguagem e uma interface intuitiva para criar aplicações completas.
+A DR_ foi criada para revolucionar o desenvolvimento web, oferecendo uma experiência de programação assistida por IA onde você pode:
 
-A DR_ foi criada com foco na produtividade e na facilidade de uso, crescendo como uma solução robusta para desenvolvimento assistido por IA!
+- 💻 **Desenvolver aplicações completas** diretamente no navegador
+- 🤖 **Alternar entre diferentes modelos de IA** para cada tarefa
+- 🔧 **Executar comandos no terminal integrado** em tempo real
+- 📁 **Fazer deploy direto** para Netlify, Vercel e outras plataformas
+- 🎨 **Anexar imagens** para melhor contexto visual
+- 📦 **Baixar projetos como ZIP** ou sincronizar com pasta local
 
-## Table of Contents
+## 📋 Índice
 
-- [Join the Community](#join-the-community)
-- [Requested Additions](#requested-additions)
-- [Features](#features)
-- [Setup](#setup)
-- [Run the Application](#run-the-application)
-- [Available Scripts](#available-scripts)
-- [Contributing](#contributing)
-- [Roadmap](#roadmap)
-- [FAQ](#faq)
+- [🚀 Instalação Rápida](#-instalação-rápida)
+- [⚙️ Configuração](#️-configuração)
+- [🎮 Como Usar](#-como-usar)
+- [🔧 Funcionalidades](#-funcionalidades)
+- [🐳 Docker](#-docker)
+- [📚 Scripts Disponíveis](#-scripts-disponíveis)
+- [🤝 Contribuindo](#-contribuindo)
+- [📝 Licença](#-licença)
 
-## Junte-se à comunidade
+## 🚀 Instalação Rápida
 
-[Junte-se à comunidade da DR_](https://dr-assistant.com/community/)
+### Pré-requisitos
 
-## Gerenciamento do projeto
+- **Node.js** (versão 18.18.0 ou superior)
+- **pnpm** (recomendado) ou npm
 
-A DR_ é um esforço colaborativo! A equipe principal de contribuidores busca organizar o projeto de forma que permita
-que você compreenda onde estão as áreas de foco atuais.
+### Instalação
 
-Se você quer saber no que estamos trabalhando, o que planejamos trabalhar, ou se deseja contribuir para o
-projeto, consulte o [guia de gerenciamento do projeto](./PROJECT.md) para começar facilmente.
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/digitalrepublic/dr-assistant.git
+   cd dr-assistant
+   ```
 
-## Requested Additions
-
-- ✅ OpenRouter Integration (@coleam00)
-- ✅ Gemini Integration (@jonathands)
-- ✅ Autogenerate Ollama models from what is downloaded (@yunatamos)
-- ✅ Filter models by provider (@jasonm23)
-- ✅ Download project as ZIP (@fabwaseem)
-- ✅ Improvements to the main bolt.new prompt in `app\lib\.server\llm\prompts.ts` (@kofi-bhr)
-- ✅ DeepSeek API Integration (@zenith110)
-- ✅ Mistral API Integration (@ArulGandhi)
-- ✅ "Open AI Like" API Integration (@ZerxZ)
-- ✅ Ability to sync files (one way sync) to local folder (@muzafferkadir)
-- ✅ Containerize the application with Docker for easy installation (@aaronbolton)
-- ✅ Publish projects directly to GitHub (@goncaloalves)
-- ✅ Ability to enter API keys in the UI (@ali00209)
-- ✅ xAI Grok Beta Integration (@milutinke)
-- ✅ LM Studio Integration (@karrot0)
-- ✅ HuggingFace Integration (@ahsan3219)
-- ✅ Bolt terminal to see the output of LLM run commands (@thecodacus)
-- ✅ Streaming of code output (@thecodacus)
-- ✅ Ability to revert code to earlier version (@wonderwhy-er)
-- ✅ Chat history backup and restore functionality (@sidbetatester)
-- ✅ Cohere Integration (@hasanraiyan)
-- ✅ Dynamic model max token length (@hasanraiyan)
-- ✅ Better prompt enhancing (@SujalXplores)
-- ✅ Prompt caching (@SujalXplores)
-- ✅ Load local projects into the app (@wonderwhy-er)
-- ✅ Together Integration (@mouimet-infinisoft)
-- ✅ Mobile friendly (@qwikode)
-- ✅ Better prompt enhancing (@SujalXplores)
-- ✅ Attach images to prompts (@atrokhym)(@stijnus)
-- ✅ Added Git Clone button (@thecodacus)
-- ✅ Git Import from url (@thecodacus)
-- ✅ PromptLibrary to have different variations of prompts for different use cases (@thecodacus)
-- ✅ Detect package.json and commands to auto install & run preview for folder and git import (@wonderwhy-er)
-- ✅ Selection tool to target changes visually (@emcconnell)
-- ✅ Detect terminal Errors and ask bolt to fix it (@thecodacus)
-- ✅ Detect preview Errors and ask bolt to fix it (@wonderwhy-er)
-- ✅ Add Starter Template Options (@thecodacus)
-- ✅ Perplexity Integration (@meetpateltech)
-- ✅ AWS Bedrock Integration (@kunjabijukchhe)
-- ✅ Add a "Diff View" to see the changes (@toddyclipsgg)
-- ⬜ **HIGH PRIORITY** - Prevent bolt from rewriting files as often (file locking and diffs)
-- ⬜ **HIGH PRIORITY** - Better prompting for smaller LLMs (code window sometimes doesn't start)
-- ⬜ **HIGH PRIORITY** - Run agents in the backend as opposed to a single model call
-- ✅ Deploy directly to Netlify (@xKevIsDev)
-- ✅ Supabase Integration (@xKevIsDev)
-- ⬜ Have LLM plan the project in a MD file for better results/transparency
-- ⬜ VSCode Integration with git-like confirmations
-- ⬜ Upload documents for knowledge - UI design templates, a code base to reference coding style, etc.
-- ✅ Voice prompting
-- ⬜ Azure Open AI API Integration
-- ⬜ Vertex AI Integration
-- ⬜ Granite Integration
-- ✅ Popout Window for Web Container(@stijnus)
-- ✅ Ability to change Popout window size (@stijnus)
-
-## Features
-
-- **AI-powered full-stack web development** for **NodeJS based applications** directly in your browser.
-- **Support for multiple LLMs** with an extensible architecture to integrate additional models.
-- **Attach images to prompts** for better contextual understanding.
-- **Integrated terminal** to view output of LLM-run commands.
-- **Revert code to earlier versions** for easier debugging and quicker changes.
-- **Download projects as ZIP** for easy portability Sync to a folder on the host.
-- **Integration-ready Docker support** for a hassle-free setup.
-- **Deploy** directly to **Netlify**
-
-## Setup
-
-If you're new to installing software from GitHub, don't worry! If you encounter any issues, feel free to submit an "issue" using the provided links or improve this documentation by forking the repository, editing the instructions, and submitting a pull request. The following instruction will help you get the stable branch up and running on your local machine in no time.
-
-Let's get you up and running with the stable version of Bolt.DIY!
-
-## Quick Download
-
-[![Download Latest Release](https://img.shields.io/github/v/release/stackblitz-labs/bolt.diy?label=Download%20Bolt&sort=semver)](https://github.com/stackblitz-labs/bolt.diy/releases/latest) ← Click here to go the the latest release version!
-
-- Next **click source.zip**
-
-## Prerequisites
-
-Before you begin, you'll need to install two important pieces of software:
-
-### Install Node.js
-
-Node.js is required to run the application.
-
-1. Visit the [Node.js Download Page](https://nodejs.org/en/download/)
-2. Download the "LTS" (Long Term Support) version for your operating system
-3. Run the installer, accepting the default settings
-4. Verify Node.js is properly installed:
-   - **For Windows Users**:
-     1. Press `Windows + R`
-     2. Type "sysdm.cpl" and press Enter
-     3. Go to "Advanced" tab → "Environment Variables"
-     4. Check if `Node.js` appears in the "Path" variable
-   - **For Mac/Linux Users**:
-     1. Open Terminal
-     2. Type this command:
-        ```bash
-        echo $PATH
-        ```
-     3. Look for `/usr/local/bin` in the output
-
-## Running the Application
-
-You have two options for running Bolt.DIY: directly on your machine or using Docker.
-
-### Option 1: Direct Installation (Recommended for Beginners)
-
-1. **Install Package Manager (pnpm)**:
-
+2. **Instale as dependências**:
    ```bash
    npm install -g pnpm
-   ```
-
-2. **Install Project Dependencies**:
-
-   ```bash
    pnpm install
    ```
 
-3. **Start the Application**:
-
-   ```bash
-   pnpm run dev
-   ```
-   
-### Option 2: Using Docker
-
-This option requires some familiarity with Docker but provides a more isolated environment.
-
-#### Additional Prerequisite
-
-- Install Docker: [Download Docker](https://www.docker.com/)
-
-#### Steps:
-
-1. **Build the Docker Image**:
-
-   ```bash
-   # Using npm script:
-   npm run dockerbuild
-
-   # OR using direct Docker command:
-   docker build . --target bolt-ai-development
-   ```
-
-2. **Run the Container**:
-   ```bash
-   docker compose --profile development up
-   ```
-
-## Configuring API Keys and Providers
-
-### Adding Your API Keys
-
-Setting up your API keys in Bolt.DIY is straightforward:
-
-1. Open the home page (main interface)
-2. Select your desired provider from the dropdown menu
-3. Click the pencil (edit) icon
-4. Enter your API key in the secure input field
-
-![API Key Configuration Interface](./docs/images/api-key-ui-section.png)
-
-### Configuring Custom Base URLs
-
-For providers that support custom base URLs (such as Ollama or LM Studio), follow these steps:
-
-1. Click the settings icon in the sidebar to open the settings menu
-   ![Settings Button Location](./docs/images/bolt-settings-button.png)
-
-2. Navigate to the "Providers" tab
-3. Search for your provider using the search bar
-4. Enter your custom base URL in the designated field
-   ![Provider Base URL Configuration](./docs/images/provider-base-url.png)
-
-> **Note**: Custom base URLs are particularly useful when running local instances of AI models or using custom API endpoints.
-
-### Supported Providers
-
-- Ollama
-- LM Studio
-- OpenAILike
-
-## Setup Using Git (For Developers only)
-
-This method is recommended for developers who want to:
-
-- Contribute to the project
-- Stay updated with the latest changes
-- Switch between different versions
-- Create custom modifications
-
-#### Prerequisites
-
-1. Install Git: [Download Git](https://git-scm.com/downloads)
-
-#### Initial Setup
-
-1. **Clone the Repository**:
-
-   ```bash
-   git clone -b stable https://github.com/stackblitz-labs/bolt.diy.git
-   ```
-
-2. **Navigate to Project Directory**:
-
-   ```bash
-   cd bolt.diy
-   ```
-
-3. **Install Dependencies**:
-
-   ```bash
-   pnpm install
-   ```
-
-4. **Start the Development Server**:
+3. **Inicie o servidor de desenvolvimento**:
    ```bash
    pnpm run dev
    ```
 
-5. **(OPTIONAL)** Switch to the Main Branch if you want to use pre-release/testbranch:
-   ```bash
-   git checkout main
-   pnpm install
-   pnpm run dev
-   ```
-  Hint: Be aware that this can have beta-features and more likely got bugs than the stable release
+4. **Abra no navegador**: `http://localhost:5173`
 
->**Open the WebUI to test (Default: http://localhost:5173)**
->   - Beginngers: 
->     - Try to use a sophisticated Provider/Model like Anthropic with Claude Sonnet 3.x Models to get best results
->     - Explanation: The System Prompt currently implemented in bolt.diy cant cover the best performance for all providers and models out there. So it works better with some models, then other, even if the models itself are perfect for >programming
->     - Future: Planned is a Plugin/Extentions-Library so there can be different System Prompts for different Models, which will help to get better results
+## ⚙️ Configuração
 
-#### Staying Updated
+### Configurando Chaves de API
 
-To get the latest changes from the repository:
+1. Acesse a interface principal da DR_
+2. Selecione seu provedor de IA preferido no dropdown
+3. Clique no ícone de edição (lápis)
+4. Insira sua chave de API no campo seguro
 
-1. **Save Your Local Changes** (if any):
+### Provedores Suportados
 
-   ```bash
-   git stash
-   ```
+- **OpenAI** (GPT-4, GPT-3.5-turbo)
+- **Anthropic** (Claude 3.5 Sonnet, Claude 3 Opus)
+- **Google** (Gemini Pro, Gemini Flash)
+- **Ollama** (modelos locais)
+- **Groq** (Llama, Mixtral)
+- **DeepSeek** (DeepSeek Coder)
+- **xAI** (Grok)
+- **Mistral** (Mistral Large, Codestral)
+- **HuggingFace** (modelos open-source)
+- **LM Studio** (modelos locais)
 
-2. **Pull Latest Updates**:
+### Configuração de URLs Personalizadas
 
-   ```bash
-   git pull 
-   ```
+Para provedores que suportam URLs personalizadas (Ollama, LM Studio):
 
-3. **Update Dependencies**:
+1. Clique no ícone de configurações na barra lateral
+2. Navegue até a aba "Provedores"
+3. Procure pelo seu provedor
+4. Insira sua URL personalizada no campo designado
 
-   ```bash
-   pnpm install
-   ```
+## 🎮 Como Usar
 
-4. **Restore Your Local Changes** (if any):
-   ```bash
-   git stash pop
-   ```
+### Desenvolvimento Básico
 
-#### Troubleshooting Git Setup
+1. **Inicie uma conversa** descrevendo o que deseja criar
+2. **Selecione o modelo de IA** mais adequado para sua tarefa
+3. **Acompanhe o código** sendo gerado em tempo real
+4. **Teste no terminal integrado** para ver os resultados
+5. **Faça ajustes** solicitando modificações à DR_
 
-If you encounter issues:
+### Funcionalidades Avançadas
 
-1. **Clean Installation**:
+- **Anexar imagens**: Envie prints ou designs para melhor contexto
+- **Importar projetos**: Carregue projetos existentes do GitHub
+- **Controle de versão**: Reverta alterações para versões anteriores
+- **Deploy automático**: Publique diretamente para suas plataformas favoritas
 
-   ```bash
-   # Remove node modules and lock files
-   rm -rf node_modules pnpm-lock.yaml
+## 🔧 Funcionalidades
 
-   # Clear pnpm cache
-   pnpm store prune
+### ✨ Principais Recursos
 
-   # Reinstall dependencies
-   pnpm install
-   ```
+- **🤖 IA Multi-Provedor**: Suporte para 15+ provedores de IA
+- **💻 Terminal Integrado**: Execute comandos e veja resultados em tempo real
+- **📁 Gerenciamento de Arquivos**: Interface completa para navegar e editar arquivos
+- **🎨 Suporte a Imagens**: Anexe capturas de tela e designs para melhor contexto
+- **📦 Export/Import**: Baixe projetos como ZIP ou sincronize com pasta local
+- **🔄 Controle de Versão**: Reverta alterações e mantenha histórico
+- **🚀 Deploy Direto**: Publique para Netlify, Vercel e outras plataformas
 
-2. **Reset Local Changes**:
-   ```bash
-   # Discard all local changes
-   git reset --hard origin/main
-   ```
+### 🛠️ Tecnologias Utilizadas
 
-Remember to always commit your local changes or stash them before pulling updates to avoid conflicts.
+- **Frontend**: React, Remix, TypeScript
+- **Build**: Vite, UnoCSS
+- **Container**: WebContainer API
+- **Deploy**: Cloudflare Pages, Netlify, Vercel
+
+## 🐳 Docker
+
+### Desenvolvimento
+
+```bash
+# Construir a imagem
+pnpm run dockerbuild
+
+# Executar o container
+docker compose --profile development up
+```
+
+### Produção
+
+```bash
+# Construir para produção
+pnpm run dockerbuild:prod
+
+# Executar em produção
+docker compose --profile production up
+```
+
+## 📚 Scripts Disponíveis
+
+```bash
+# Desenvolvimento
+pnpm run dev          # Inicia servidor de desenvolvimento
+pnpm run build        # Constrói o projeto para produção
+pnpm run preview      # Visualiza build de produção localmente
+
+# Testes e Qualidade
+pnpm run test         # Executa testes com Vitest
+pnpm run typecheck    # Verifica tipos TypeScript
+pnpm run lint         # Executa linting
+pnpm run lint:fix     # Corrige problemas de linting automaticamente
+
+# Deploy
+pnpm run deploy       # Deploy para Cloudflare Pages
+pnpm run start        # Executa aplicação construída localmente
+
+# Docker
+pnpm run dockerbuild  # Constrói imagem Docker de desenvolvimento
+pnpm run dockerbuild:prod # Constrói imagem Docker de produção
+```
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. **Fork** o repositório
+2. **Crie** uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
+3. **Commit** suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. **Push** para a branch (`git push origin feature/nova-funcionalidade`)
+5. **Abra** um Pull Request
+
+### Diretrizes de Contribuição
+
+- Siga os padrões de código existentes
+- Adicione testes para novas funcionalidades
+- Atualize a documentação quando necessário
+- Mantenha commits claros e descritivos
+
+## 🚀 Roadmap
+
+### Próximas Funcionalidades
+
+- **📱 Aplicativo Mobile**: Versão nativa para iOS e Android
+- **🔌 Sistema de Plugins**: Extensões personalizadas
+- **👥 Colaboração**: Desenvolvimento em equipe
+- **☁️ Sincronização**: Backup automático na nuvem
+- **📊 Analytics**: Métricas de desenvolvimento
+- **🎯 Templates**: Modelos prontos para diferentes tipos de projeto
+
+## 📞 Suporte
+
+- **Documentação**: [docs.dr-assistant.com](https://docs.dr-assistant.com)
+- **Issues**: [GitHub Issues](https://github.com/digitalrepublic/dr-assistant/issues)
+- **Comunidade**: [Discord](https://discord.gg/dr-assistant)
+- **Email**: suporte@dr-assistant.com
+
+## 📝 Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-## Available Scripts
+**Desenvolvido com ❤️ pela Digital Republic**
 
-- **`pnpm run dev`**: Starts the development server.
-- **`pnpm run build`**: Builds the project.
-- **`pnpm run start`**: Runs the built application locally using Wrangler Pages.
-- **`pnpm run preview`**: Builds and runs the production build locally.
-- **`pnpm test`**: Runs the test suite using Vitest.
-- **`pnpm run typecheck`**: Runs TypeScript type checking.
-- **`pnpm run typegen`**: Generates TypeScript types using Wrangler.
-- **`pnpm run deploy`**: Deploys the project to Cloudflare Pages.
-- **`pnpm run lint:fix`**: Automatically fixes linting issues.
-
----
-
-## Contributing
-
-We welcome contributions! Check out our [Contributing Guide](CONTRIBUTING.md) to get started.
-
----
-
-## Roadmap
-
-Explore upcoming features and priorities on our [Roadmap](https://roadmap.sh/r/ottodev-roadmap-2ovzo).
-
----
-
-## FAQ
-
-For answers to common questions, issues, and to see a list of recommended models, visit our [FAQ Page](FAQ.md).
-
-
-# Licensing
-**Who needs a commercial WebContainer API license?**
-
-bolt.diy source code is distributed as MIT, but it uses WebContainers API that [requires licensing](https://webcontainers.io/enterprise) for production usage in a commercial, for-profit setting. (Prototypes or POCs do not require a commercial license.) If you're using the API to meet the needs of your customers, prospective customers, and/or employees, you need a license to ensure compliance with our Terms of Service. Usage of the API in violation of these terms may result in your access being revoked.
+*A DR_ é uma assistente de IA que visa democratizar o desenvolvimento web, tornando-o acessível e eficiente para todos.*
