@@ -10,20 +10,27 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export default defineConfig((config) => {
+  const isProduction = config.mode === 'production';
+  const buildTime = process.env.VITE_BUILD_TIME || Date.now().toString();
+  const buildId = process.env.VITE_BUILD_ID || `build-${buildTime}`;
+  
   return {
     define: {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.BUILD_TIME': JSON.stringify(buildTime),
+      'process.env.BUILD_ID': JSON.stringify(buildId),
     },
     build: {
       target: 'esnext',
       sourcemap: false,
-      minify: 'terser',
+      minify: isProduction ? 'terser' : false,
       rollupOptions: {
         external: ['@webcontainer/api'],
         output: {
           sourcemap: false,
           sourcemapExcludeSources: false,
           format: 'esm',
+          inlineDynamicImports: false,
         },
       },
     },

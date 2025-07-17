@@ -1,0 +1,21 @@
+# Force clean builds - ignore all cache
+build/
+dist/
+node_modules/
+.env.local
+.cache/
+.vite/
+*.map
+.remix/
+.vercel/
+.next/
+.nuxt/
+
+# Sourcemap files
+**/*.map
+**/*.js.map
+**/*.css.map
+
+# Build artifacts
+**/build/
+**/dist/
