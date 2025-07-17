@@ -1,10 +1,3 @@
 {
-  "framework": "remix",
-  "buildCommand": "remix vite:build",
-  "outputDirectory": "build/client",
-  "installCommand": "pnpm install --frozen-lockfile",
-  "env": {
-    "NODE_ENV": "production",
-    "VERCEL": "1"
-  }
+  "framework": "remix"
 }
