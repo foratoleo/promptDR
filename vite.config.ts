@@ -15,6 +15,10 @@ export default defineConfig((config) => {
     },
     build: {
       target: 'esnext',
+      sourcemap: false,
+      rollupOptions: {
+        external: ['@webcontainer/api'],
+      },
     },
     plugins: [
       nodePolyfills({
@@ -38,6 +42,14 @@ export default defineConfig((config) => {
           }
 
           return null;
+        },
+      },
+      {
+        name: 'disable-sourcemap-warnings',
+        configResolved(resolvedConfig) {
+          if (resolvedConfig.command === 'build') {
+            resolvedConfig.build.sourcemap = false;
+          }
         },
       },
       config.command === 'serve' && config.mode !== 'test' && !process.env.VERCEL && remixCloudflareDevProxy(),
