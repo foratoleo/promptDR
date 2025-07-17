@@ -37,14 +37,10 @@ export default defineConfig((config) => {
     },
     optimizeDeps: {
       exclude: ['@webcontainer/api', 'istextorbinary'],
-      include: ['path-browserify'],
     },
     resolve: {
       alias: {
-        path: 'path-browserify',
-      },
-      fallback: {
-        path: 'path-browserify',
+        path: new URL('./app/utils/path-polyfill.ts', import.meta.url).pathname,
       },
     },
     ssr: {
