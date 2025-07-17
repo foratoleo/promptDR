@@ -43,20 +43,23 @@ export default defineConfig((config) => {
       alias: {
         path: 'path-browserify',
       },
+      fallback: {
+        path: 'path-browserify',
+      },
     },
     ssr: {
       noExternal: ['istextorbinary', '@radix-ui/react-collapsible', '@radix-ui/react-scroll-area'],
     },
     plugins: [
       nodePolyfills({
-        include: ['buffer', 'process', 'util', 'stream', 'path'],
+        include: ['buffer', 'process', 'util', 'stream'],
         globals: {
           Buffer: true,
           process: true,
           global: true,
         },
         protocolImports: true,
-        exclude: ['child_process', 'fs'],
+        exclude: ['child_process', 'fs', 'path'],
       }),
       {
         name: 'buffer-polyfill',
@@ -68,18 +71,6 @@ export default defineConfig((config) => {
             };
           }
 
-          return null;
-        },
-      },
-      {
-        name: 'commonjs-polyfill',
-        transform(code, id) {
-          if (id.includes('path-browserify')) {
-            return {
-              code: code.replace(/module\.exports/g, 'export default').replace(/exports\./g, 'export const '),
-              map: null,
-            };
-          }
           return null;
         },
       },
@@ -104,7 +95,7 @@ export default defineConfig((config) => {
             }
           }
         },
-        generateBundle(options, bundle) {
+        generateBundle(_options, bundle) {
           // Remove any sourcemap files that might have been generated
           for (const fileName in bundle) {
             if (fileName.endsWith('.map')) {
@@ -112,7 +103,7 @@ export default defineConfig((config) => {
             }
           }
         },
-        writeBundle(options, bundle) {
+        writeBundle(_options, bundle) {
           // Additional cleanup - ensure no sourcemap files are written
           for (const fileName in bundle) {
             if (fileName.endsWith('.map')) {
