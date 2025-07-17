@@ -3,7 +3,6 @@
   "framework": "remix",
   "buildCommand": "pnpm run build:vercel",
   "installCommand": "pnpm install --frozen-lockfile",
-  "packageManager": "pnpm@9.4.0",
   "env": {
     "NODE_ENV": "production"
   },
