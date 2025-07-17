@@ -1,8 +1,3 @@
 {
-  "framework": "remix",
-  "functions": {
-    "app/entry.server.tsx": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  "framework": "remix"
 }
