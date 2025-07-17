@@ -22,7 +22,7 @@ export default defineConfig((config) => {
         external: ['@webcontainer/api'],
         output: {
           sourcemap: false,
-          sourcemapExcludeSources: true,
+          sourcemapExcludeSources: false,
           format: 'esm',
         },
       },
@@ -37,7 +37,7 @@ export default defineConfig((config) => {
       },
     },
     ssr: {
-      noExternal: ['istextorbinary'],
+      noExternal: ['istextorbinary', '@radix-ui/react-collapsible', '@radix-ui/react-scroll-area'],
     },
     plugins: [
       nodePolyfills({
