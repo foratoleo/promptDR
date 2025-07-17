@@ -15,6 +15,8 @@
     "build": "npm run clean && VITE_BUILD_TIME=$(date +%s) remix vite:build",
     "build:vercel": "npm run clean && NODE_ENV=production VITE_BUILD_TIME=$(date +%s) remix vite:build",
     "force-deploy": "node scripts/force-deploy.cjs",
+    "setup-vercel": "node scripts/setup-vercel.cjs",
+    "vercel-link": "vercel link",
     "dev": "node pre-start.cjs  && remix vite:dev",
     "test": "vitest --run",
     "test:watch": "vitest",
