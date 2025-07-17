@@ -2,7 +2,7 @@
   "version": 2,
   "framework": "remix",
   "buildCommand": "npm run build:vercel",
-  "installCommand": "npm ci --force",
+  "installCommand": "pnpm install --frozen-lockfile",
   "env": {
     "NODE_ENV": "production"
   },
