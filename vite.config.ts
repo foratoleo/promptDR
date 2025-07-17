@@ -22,6 +22,8 @@ export default defineConfig((config) => {
         external: ['@webcontainer/api'],
         output: {
           sourcemap: false,
+          sourcemapExcludeSources: true,
+          format: 'esm',
         },
       },
     },
@@ -64,16 +66,37 @@ export default defineConfig((config) => {
       {
         name: 'disable-sourcemap-warnings',
         configResolved(resolvedConfig) {
-          if (resolvedConfig.command === 'build') {
-            resolvedConfig.build.sourcemap = false;
-            if (resolvedConfig.build.rollupOptions?.output) {
-              if (Array.isArray(resolvedConfig.build.rollupOptions.output)) {
-                resolvedConfig.build.rollupOptions.output.forEach(output => {
-                  output.sourcemap = false;
-                });
-              } else {
-                resolvedConfig.build.rollupOptions.output.sourcemap = false;
-              }
+          // Force disable sourcemaps completely
+          resolvedConfig.build.sourcemap = false;
+          
+          // Disable for rollup options
+          if (resolvedConfig.build.rollupOptions) {
+            if (!resolvedConfig.build.rollupOptions.output) {
+              resolvedConfig.build.rollupOptions.output = {};
+            }
+            
+            if (Array.isArray(resolvedConfig.build.rollupOptions.output)) {
+              resolvedConfig.build.rollupOptions.output.forEach(output => {
+                output.sourcemap = false;
+              });
+            } else {
+              resolvedConfig.build.rollupOptions.output.sourcemap = false;
+            }
+          }
+        },
+        generateBundle(options, bundle) {
+          // Remove any sourcemap files that might have been generated
+          for (const fileName in bundle) {
+            if (fileName.endsWith('.map')) {
+              delete bundle[fileName];
+            }
+          }
+        },
+        writeBundle(options, bundle) {
+          // Additional cleanup - ensure no sourcemap files are written
+          for (const fileName in bundle) {
+            if (fileName.endsWith('.map')) {
+              delete bundle[fileName];
             }
           }
         },
