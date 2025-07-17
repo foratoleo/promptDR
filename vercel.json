@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm run build",
+  "buildCommand": "remix vite:build",
   "outputDirectory": "build/client",
   "framework": "remix",
   "env": {
@@ -11,5 +11,11 @@
     "build/server/index.js": {
       "runtime": "nodejs20.x"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/remix"
+    }
+  ]
 }
