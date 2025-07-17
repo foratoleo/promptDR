@@ -17,18 +17,25 @@ export default defineConfig((config) => {
     build: {
       target: 'esnext',
       sourcemap: false,
+      minify: 'terser',
       rollupOptions: {
         external: ['@webcontainer/api'],
+        output: {
+          sourcemap: false,
+        },
       },
     },
     optimizeDeps: {
-      exclude: ['@webcontainer/api'],
+      exclude: ['@webcontainer/api', 'istextorbinary'],
       include: ['path-browserify'],
     },
     resolve: {
       alias: {
         path: 'path-browserify',
       },
+    },
+    ssr: {
+      noExternal: ['istextorbinary'],
     },
     plugins: [
       nodePolyfills({
@@ -59,6 +66,15 @@ export default defineConfig((config) => {
         configResolved(resolvedConfig) {
           if (resolvedConfig.command === 'build') {
             resolvedConfig.build.sourcemap = false;
+            if (resolvedConfig.build.rollupOptions?.output) {
+              if (Array.isArray(resolvedConfig.build.rollupOptions.output)) {
+                resolvedConfig.build.rollupOptions.output.forEach(output => {
+                  output.sourcemap = false;
+                });
+              } else {
+                resolvedConfig.build.rollupOptions.output.sourcemap = false;
+              }
+            }
           }
         },
       },
@@ -70,7 +86,7 @@ export default defineConfig((config) => {
           v3_throwAbortReason: true,
           v3_lazyRouteDiscovery: true,
         },
-        presets: process.env.VERCEL ? [vercelPreset()] : [],
+        presets: [vercelPreset()],
       }),
       UnoCSS(),
       tsconfigPaths(),
