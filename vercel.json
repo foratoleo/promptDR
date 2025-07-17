@@ -1,21 +1,10 @@
 {
+  "framework": "remix",
   "buildCommand": "remix vite:build",
   "outputDirectory": "build/client",
-  "framework": "remix",
+  "installCommand": "pnpm install --frozen-lockfile",
   "env": {
     "NODE_ENV": "production",
     "VERCEL": "1"
-  },
-  "installCommand": "pnpm install --frozen-lockfile",
-  "functions": {
-    "build/server/index.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api/remix"
-    }
-  ]
+  }
 }
