@@ -1,0 +1,15 @@
+{
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "build/client",
+  "framework": "remix",
+  "env": {
+    "NODE_ENV": "production",
+    "VERCEL": "1"
+  },
+  "installCommand": "pnpm install --frozen-lockfile",
+  "functions": {
+    "build/server/index.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
