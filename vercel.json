@@ -4,8 +4,7 @@
   "buildCommand": "npm run build:vercel",
   "installCommand": "npm ci --force",
   "env": {
-    "NODE_ENV": "production",
-    "VITE_BUILD_TIME": "@now"
+    "NODE_ENV": "production"
   },
   "build": {
     "env": {
