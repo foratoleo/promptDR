@@ -1,4 +1,5 @@
 import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from '@remix-run/dev';
+import { vercelPreset } from '@vercel/remix/vite';
 import UnoCSS from 'unocss/vite';
 import { defineConfig, type ViteDevServer } from 'vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
@@ -20,6 +21,15 @@ export default defineConfig((config) => {
         external: ['@webcontainer/api'],
       },
     },
+    optimizeDeps: {
+      exclude: ['@webcontainer/api'],
+      include: ['path-browserify'],
+    },
+    resolve: {
+      alias: {
+        path: 'path-browserify',
+      },
+    },
     plugins: [
       nodePolyfills({
         include: ['buffer', 'process', 'util', 'stream'],
@@ -29,7 +39,7 @@ export default defineConfig((config) => {
           global: true,
         },
         protocolImports: true,
-        exclude: ['child_process', 'fs', 'path'],
+        exclude: ['child_process', 'fs'],
       }),
       {
         name: 'buffer-polyfill',
@@ -60,6 +70,7 @@ export default defineConfig((config) => {
           v3_throwAbortReason: true,
           v3_lazyRouteDiscovery: true,
         },
+        presets: process.env.VERCEL ? [vercelPreset()] : [],
       }),
       UnoCSS(),
       tsconfigPaths(),
