@@ -36,9 +36,7 @@ try {
   execSync('pnpm install', { stdio: 'inherit' });
   console.log('\n🗑️  Clearing pnpm cache...');
   execSync('pnpm cache clean', { stdio: 'inherit' });
-  console.log('\n🏗️  Rebuilding project...');
-  execSync('pnpm build', { stdio: 'inherit' });
-  console.log('\n✨ Clean completed! You can now run pnpm dev');
+  console.log('\n✨ Clean completed! Ready for build.');
 } catch (err) {
   console.error('\n❌ Error during cleanup:', err.message);
   process.exit(1);

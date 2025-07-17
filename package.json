@@ -12,8 +12,9 @@
   },
   "scripts": {
     "deploy": "npm run build && wrangler pages deploy",
-    "build": "npm run clean && VITE_BUILD_TIME=$(date +%s) remix vite:build",
-    "build:vercel": "npm run clean && NODE_ENV=production VITE_BUILD_TIME=$(date +%s) remix vite:build",
+    "build": "VITE_BUILD_TIME=$(date +%s) remix vite:build",
+    "build:clean": "npm run clean && VITE_BUILD_TIME=$(date +%s) remix vite:build",
+    "build:vercel": "NODE_ENV=production VITE_BUILD_TIME=$(date +%s) remix vite:build",
     "force-deploy": "node scripts/force-deploy.cjs",
     "setup-vercel": "node scripts/setup-vercel.cjs",
     "vercel-link": "vercel link",
