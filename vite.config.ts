@@ -19,6 +19,7 @@ export default defineConfig((config) => {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.BUILD_TIME': JSON.stringify(buildTime),
       'process.env.BUILD_ID': JSON.stringify(buildId),
+      global: 'globalThis',
     },
     build: {
       target: 'esnext',
@@ -48,7 +49,7 @@ export default defineConfig((config) => {
     },
     plugins: [
       nodePolyfills({
-        include: ['buffer', 'process', 'util', 'stream'],
+        include: ['buffer', 'process', 'util', 'stream', 'path'],
         globals: {
           Buffer: true,
           process: true,
@@ -67,6 +68,18 @@ export default defineConfig((config) => {
             };
           }
 
+          return null;
+        },
+      },
+      {
+        name: 'commonjs-polyfill',
+        transform(code, id) {
+          if (id.includes('path-browserify')) {
+            return {
+              code: code.replace(/module\.exports/g, 'export default').replace(/exports\./g, 'export const '),
+              map: null,
+            };
+          }
           return null;
         },
       },
