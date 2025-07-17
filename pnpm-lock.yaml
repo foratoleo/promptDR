@@ -164,6 +164,9 @@ importers:
       '@remix-run/cloudflare-pages':
         specifier: ^2.15.2
         version: 2.16.8(@cloudflare/workers-types@4.20250715.0)(typescript@5.8.3)
+      '@remix-run/dev':
+        specifier: ^2.15.2
+        version: 2.16.8(@remix-run/react@2.16.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(@remix-run/serve@2.16.8(typescript@5.8.3))(@types/node@14.18.33)(sass-embedded@1.89.2)(terser@5.43.1)(ts-node@10.9.1(@types/node@14.18.33)(typescript@5.8.3))(typescript@5.8.3)(vite@5.4.19(@types/node@14.18.33)(sass-embedded@1.89.2)(terser@5.43.1))(wrangler@4.24.4(@cloudflare/workers-types@4.20250715.0))
       '@remix-run/node':
         specifier: ^2.15.2
         version: 2.16.8(typescript@5.8.3)
@@ -366,9 +369,6 @@ importers:
       '@iconify/types':
         specifier: ^2.0.0
         version: 2.0.0
-      '@remix-run/dev':
-        specifier: ^2.15.2
-        version: 2.16.8(@remix-run/react@2.16.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(@remix-run/serve@2.16.8(typescript@5.8.3))(@types/node@14.18.33)(sass-embedded@1.89.2)(terser@5.43.1)(ts-node@10.9.1(@types/node@14.18.33)(typescript@5.8.3))(typescript@5.8.3)(vite@5.4.19(@types/node@14.18.33)(sass-embedded@1.89.2)(terser@5.43.1))(wrangler@4.24.4(@cloudflare/workers-types@4.20250715.0))
       '@remix-run/serve':
         specifier: ^2.15.2
         version: 2.16.8(typescript@5.8.3)
