@@ -31,7 +31,7 @@
       ]
     },
     {
-      "source": "/**/*.js",
+      "source": "/(.*\\.js)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -40,7 +40,7 @@
       ]
     },
     {
-      "source": "/**/*.map",
+      "source": "/(.*\\.map)",
       "headers": [
         {
           "key": "Cache-Control",
